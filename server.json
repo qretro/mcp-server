@@ -1,0 +1,13 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.qretro/retro",
+  "description": "QRetro retrospectives and planning poker over MCP: boards, action items, poker games, estimates.",
+  "version": "1.2.1",
+  "websiteUrl": "https://qretro.com",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.qretro.com"
+    }
+  ]
+}
