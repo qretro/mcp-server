@@ -4,9 +4,12 @@ Your team's retrospectives, available to any MCP client — read boards, summari
 
 [![MCP Registry](https://img.shields.io/badge/MCP%20Registry-com.qretro%2Fretro-2f3437)](https://registry.modelcontextprotocol.io/v0/servers?search=qretro)
 [![Transport](https://img.shields.io/badge/transport-streamable--http-2f3437)](https://qretro.com/docs/mcp)
+[![Protocol](https://img.shields.io/badge/protocol-2026--07--28-2f3437)](https://modelcontextprotocol.io/specification/2026-07-28)
 [![Auth](https://img.shields.io/badge/auth-OAuth%202.1%20%7C%20token-2f3437)](https://qretro.com/docs/mcp)
 
 > This repository holds the public manifest and documentation for QRetro's **hosted** MCP server. The server runs at `https://mcp.qretro.com` — there is nothing to install, build or self-host. Product source lives elsewhere.
+>
+> The server speaks MCP `2026-07-28` (stateless, `server/discover`) and still answers clients that open with `initialize` on `2025-11-25`, `2025-06-18` or `2025-03-26`.
 
 ## Connect
 
@@ -118,7 +121,7 @@ Access is bounded twice over: by what the client was granted, and by the teams y
 | `mcp:write` | Create and update action items, messages and poker games | yes | yes |
 | `mcp:delete` | Delete your own messages | no | yes |
 
-Tools a client has no permission for are not offered to it at all. Permissions match the interface exactly: a client can do only what you could do yourself on the same board.
+Tools a client has no permission for are not offered to it at all. Every tool carries MCP annotations: read tools are marked read-only, and only the ones that overwrite or remove data — deleting a message, rejecting a suggestion, overwriting an estimate in your tracker — are marked destructive, so your client knows when to ask before acting. Permissions match the interface exactly: a client can do only what you could do yourself on the same board.
 
 Revoke at any time in Settings → API Keys — "Connected applications" for sign-ins, the token list for tokens.
 
